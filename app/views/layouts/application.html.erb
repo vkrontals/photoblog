@@ -37,13 +37,12 @@
 
   <body>
     <div class="hfeed site">
-      <div class="content">
-        <%= render 'layouts/header' %>
+      <%= render 'layouts/header' %>
 
+      <main id="main" class="site-main" role="main">
         <%= yield %>
-
-        <%= render 'layouts/footer' %>
-      </div>
+      </main>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
