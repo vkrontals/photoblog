@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Photoblog</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>That camera guy - Street photography London</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<%= yield %>
+    <!-- <link rel="pingback" href="http://thatcameraguy.co.uk/xmlrpc.php"> -->
 
-</body>
+    <meta name="description" content="London street photography, shooting mostly film. Black and white, medium format and 35mm film, Zenza Bronica, Nikon"/>
+    <link rel="canonical" href="http://thatcameraguy.co.uk" />
+
+    <!--<link rel="next" href="http://thatcameraguy.co.uk/page/2/" /> -->
+
+    <!-- open graph tags -->
+    <meta property="og:locale" content="en_UK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="That camera guy - Street photography London" />
+    <meta property="og:description" content="London street photography, shooting mostly film. Black and white, medium format and 35mm film, Zenza Bronica, Nikon" />
+    <meta property="og:url" content="http://thatcameraguy.co.uk" />
+    <meta property="og:site_name" content="That camera guy" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:description" content="London street photography, shooting mostly film. Black and white, medium format and 35mm film, Zenza Bronica, Nikon"/>
+    <meta name="twitter:title" content="That camera guy - Street photography London"/>
+    <meta name="twitter:domain" content="That camera guy"/>
+
+    <meta name="google-site-verification" content="A_-ni0kpjfoChPAbENtOg0BjtYUy-N-yTM9nXaBseAc" />
+
+    <!--<link rel="alternate" type="application/rss+xml" title="That camera guy &raquo; Feed" href="http://thatcameraguy.co.uk/feed/" /> -->
+    <!-- <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://thatcameraguy.co.uk/xmlrpc.php?rsd" /> -->
+    <!-- <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://thatcameraguy.co.uk/wp-includes/wlwmanifest.xml" /> -->
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="hfeed site">
+      <div class="content">
+        <%= render 'layouts/header' %>
+
+        <%= yield %>
+
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
+  </body>
 </html>
