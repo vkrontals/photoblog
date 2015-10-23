@@ -1,0 +1,7 @@
+google:
+  enabled: false
+
+site:
+  domain: thacameraguy.local:5000
+  full_domain: http://thatcameraguy.local:5000
+

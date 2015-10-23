@@ -1,9 +1,9 @@
 <header id="masthead" role="banner">
-  <h1 class="site-title"><a href="http://thatcameraguy.co.uk/" rel="home">That camera guy</a></h1>
-  <h2 class="site-description">Street photography and stuff</h2>
+  <h1 class="site-title"><%= link_to Settings.site.name, root_path, rel: :home %></h1>
+  <h2 class="site-description"><%= Settings.site.tagline %></h2>
   <ul class="menu">
-    <li><a href="http://thatcameraguy.co.uk/">Blog</a></li>
-    <li><a href="http://thatcameraguy.co.uk/camera-gear/">Camera gear</a></li>
-    <li><a href="http://thatcameraguy.co.uk/archives/">Archives</a></li>
+    <li><%= link_to 'Blog', posts_path %></li>
+    <li><%= link_to 'Camera gear', camera_gear_path %></li>
+    <li><%= link_to 'Archives', archives_path %></a></li>
   </ul>
 </header>
