@@ -1,0 +1,28 @@
+@media all {
+
+  .entry-meta {
+    margin-top: 3em;
+    font-size: .8em;
+    text-align: left;
+
+    .byline {
+      display: none;
+    }
+
+    p {
+      margin: .5em 0;
+
+      a {
+        display: inline-block;
+        margin: .1em .2em;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 0 .2em;
+        border-radius: .2em;
+
+        .date.updated {
+          display: none;
+        }
+      }
+    }
+  }
+}

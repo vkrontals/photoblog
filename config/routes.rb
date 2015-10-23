@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   %w{ home
       camera-gear
-      archives }.each do |page|
+      archives
+      styleguide
+      post }.each do |page|
 
     get "/#{page}"  => "pages##{ page.underscore }"
 

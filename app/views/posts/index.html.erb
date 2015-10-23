@@ -1,29 +1,75 @@
-<p id="notice"><%= notice %></p>
+<article class="single-page">
 
-<h1>Listing Posts</h1>
+  <header class="entry-header">
+    <p><%= notice %></p>
+    <h1 class="entry-title">Listing Posts</h1>
+  </header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Index</th>
-      <th>Show</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="entry-content">
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.index %></td>
-        <td><%= post.show %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="entry-thumbnail">
+      <a href="#" title="Permalink to ..." rel="id?">
+        <!--<img />-->
+      </a>
+    </div>
 
-<br>
+    <div class="entry-body">
+      <table>
+        <thead>
+        <tr>
+          <th>Index</th>
+          <th>Show</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
 
-<%= link_to 'New Post', new_post_path %>
+        <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.index %></td>
+            <td><%= post.show %></td>
+            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+     <p><%= link_to 'New Post', new_post_path %></p>
+    </div>
+  </div>
+
+  <footer class="entry-meta">
+    <p class="posted-on">
+      Posted on
+      <a href="http://thatcameraguy.co.uk/centon-df-300-minolta-x300/" rel="bookmark">
+        <time class="entry-date published" datetime="2015-08-12T18:08:19+00:00">August 12, 2015</time>
+        <time class="date updated" datetime="2015-08-24T09:22:06+00:00">August 24, 2015</time>
+      </a>
+    </p>
+
+    <p class="byline">
+      by
+       <span class="author vcard">
+         <a class="url fn n" href="http://thatcameraguy.co.uk/author/valters-krontals/">Valters Krontals</a>
+       </span>
+    </p>
+
+    <p class="category-links">
+      This entry was posted in
+      <a href="http://thatcameraguy.co.uk/category/35mm/" rel="category tag">35mm</a>
+    </p>
+
+    <p class="tags-links">
+      and tagged
+      <a href="http://thatcameraguy.co.uk/tag/centon-df-300/" rel="tag">Centon DF-300</a>
+    </p>
+
+    <p class="bookmark-link">
+      Bookmark the <a href="http://thatcameraguy.co.uk/centon-df-300-minolta-x300/" rel="bookmark">permalink</a>
+    </p>
+  </footer>
+</article>

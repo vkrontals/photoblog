@@ -1,0 +1,38 @@
+@media all {
+  article.single-page {
+    .entry-content {
+      text-align: left;
+    }
+
+    .entry-thumbnail {
+      margin: 0 auto;
+      max-width: 1280px;
+    }
+
+    .entry-body {
+      margin-top: 1.5em;
+    }
+
+    .entry-body img + span {
+      text-align: center;
+      display: block;
+    }
+
+    .entry-body, .entry-meta, .entry-body img  {
+      display: block;
+      max-width: 900px;
+      width: 93%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  article.single-page {
+    .entry-body img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

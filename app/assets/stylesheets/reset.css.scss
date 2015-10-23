@@ -1,48 +1,223 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+body { margin: 0 }
+img { max-width: 100% }
+svg { max-height: 100% }
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+input,
+select,
+textarea,
+fieldset {
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
+
+label {
+  vertical-align: middle;
 }
-body {
-  line-height: 1;
+
+input[type=text],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=time],
+input[type=url],
+input[type=week] {
+  height: 2.25rem;
+  padding: .5rem .5rem;
+  vertical-align: middle;
+  -webkit-appearance: none;
 }
-ol, ul {
-  list-style: none;
+
+select {
+  line-height: 1.75;
+  padding: .5rem .5rem;
 }
-blockquote, q {
-  quotes: none;
+
+select:not([multiple]) {
+  height: 2.25rem;
+  vertical-align: middle;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
+
+textarea {
+  line-height: 1.75;
+  padding: .5rem .5rem;
 }
+
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
   border-spacing: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+th,
+td {
+  padding: .25rem 1rem;
+  line-height: inherit;
+}
+
+th { vertical-align: bottom }
+td { vertical-align: top }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  line-height: 1.5;
+  font-size: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-top: 1em;
+  margin-bottom: .5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+pre, code, samp {
+  font-family: 'Source Code Pro', Consolas, monospace;
+  font-size: inherit;
+}
+
+pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow-x: scroll;
+}
+
+h1 { font-size: 2rem }
+h2 { font-size: 1.5rem }
+h3 { font-size: 1.25rem }
+h4 { font-size: 1rem }
+h5 { font-size: .875rem }
+h6 { font-size: .75rem }
+
+body {
+  color: #111;
+  background-color: #fff;
+}
+
+a {
+  color: #0074d9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+pre, code {
+  background-color: transparent;
+  border-radius: 3px;
+}
+
+hr {
+  border: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0,0,0,.125);
+}
+
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.h1 { font-size: 2rem }
+.h2 { font-size: 1.5rem }
+.h3 { font-size: 1.25rem }
+.h4 { font-size: 1rem }
+.h5 { font-size: .875rem }
+.h6 { font-size: .75rem }
+
+.bold    { font-weight: bold }
+.regular { font-weight: normal }
+.italic  { font-style: italic }
+.caps    { text-transform: uppercase; letter-spacing: .2em; }
+
+.left-align   { text-align: left }
+.center       { text-align: center }
+.right-align  { text-align: right }
+.justify      { text-align: justify }
+
+.nowrap { white-space: nowrap }
+.break-word { word-wrap: break-word }
+
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-reset {
+  list-style: none;
+  padding-left: 0;
+}
+
+.inline       { display: inline }
+.block        { display: block }
+.inline-block { display: inline-block }
+.table        { display: table }
+.table-cell   { display: table-cell }
+
+.overflow-hidden { overflow: hidden }
+.overflow-scroll { overflow: scroll }
+.overflow-auto   { overflow: auto }
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table
+}
+.clearfix:after { clear: both }
+
+.left  { float: left }
+.right { float: right }
+
+.border-box { box-sizing: border-box }
+
+.align-baseline { vertical-align: baseline }
+.align-top      { vertical-align: top }
+.align-middle   { vertical-align: middle }
+.align-bottom   { vertical-align: bottom }
+
+
+.display-none { display: none !important }
+
+.hide {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.container {
+  max-width: 64em;
+  margin-left: auto;
+  margin-right: auto;
 }
