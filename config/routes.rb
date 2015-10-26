@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :users, only: [:show], as: :author, path: :author
 
   root 'pages#home'
 

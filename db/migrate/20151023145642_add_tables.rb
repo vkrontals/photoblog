@@ -58,6 +58,7 @@ class AddTables < ActiveRecord::Migration
     add_index :posts_terms, [:post_id, :term_id]
     add_index :terms, :term_group
 
+    # TODO: add index to posts permalink
   end
 end
 

@@ -20,5 +20,10 @@ class Post < ActiveRecord::Base
 
   validates :content, :title, :publish_date, :permalink, :status, presence: true
   validates :permalink, uniqueness: true
+
+  def to_param
+    permalink
+  end
+
 end
 
