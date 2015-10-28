@@ -1,6 +1,7 @@
 require 'json'
 
-class Utils::PostsLoader
+module Utils
+  class PostsBuilder
 
   attr_reader :posts
 
@@ -11,8 +12,8 @@ class Utils::PostsLoader
   end
 
   def self.make_post(post_hash)
-    tags = make_terms(post_hash['tags'], 'tag')
-    categories = make_terms(post_hash['categories'], 'category')
+    tags       = Utils::TermsBuilder.make_terms(post_hash['tags'], 'tag')
+    categories = Utils::TermsBuilder.make_terms(post_hash['categories'], 'category')
     terms = tags + categories
     Post.new(
       {
@@ -24,56 +25,12 @@ class Utils::PostsLoader
         status:        post_hash['status'],
         permalink:     post_hash['permalink'],
         comment_count: post_hash['comment_count'],
-        thumbnail:     make_image(post_hash['thumbnail']),
+        thumbnail:     Utils::ImagesBuilder.make_image(post_hash['thumbnail']),
         updated_at:    post_hash['updated'].to_datetime,
         terms:         terms
       }
     )
   end
-
-  def self.make_image(image_hash)
-    raise Errors::Image::UrlMissing if image_hash['url'].blank?
-    raise Errors::Image::UpdatedTimeMissing if image_hash['uploaded_time'].blank?
-
-    begin
-      uploaded_time = image_hash['uploaded_time'].to_datetime
-    rescue ArgumentError
-      raise Errors::Image::InvalidDateTimeFormat
-    end
-
-    images = Image.where('id = ? or url = ?', image_hash['id'], image_hash['url'])
-
-    if images.empty?
-      Image.new({
-                url: image_hash['url'],
-                uploaded_time: uploaded_time,
-                caption: image_hash['caption'],
-                alt_txt: image_hash['alt_txt']
-              })
-    else
-      images.first
-    end
-
-  end
-
-  def self.make_terms(term_string, term_type)
-    term_array = term_string.split(',').map(&:strip)
-
-    term_array.map do |term_element|
-      Utils::PostsLoader.make_term term_element, term_type
-    end
-
-  end
-
-  def self.make_term(term_string, term_group)
-    Term.find_by_slug(term_string.parameterize) ||
-      Term.new({
-                 name: term_string,
-                 slug: term_string.parameterize,
-                 term_group: term_group
-               })
-  end
-
 
   def postify
     author = User.last || add_user
@@ -113,4 +70,5 @@ class Utils::PostsLoader
     User.last
   end
 
+  end
 end
