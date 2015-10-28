@@ -16,30 +16,37 @@ class Utils::PostsLoader
     terms = tags + categories
     Post.new(
       {
-        author_id: 1,
-        content: post_hash['content'],
-        publish_date: post_hash['publish_date'].to_datetime,
-        title: post_hash['title'],
-        excerpt: post_hash['excerpt'],
-        status: post_hash['status'],
-        permalink: post_hash['permalink'],
+        author_id:     1,
+        content:       post_hash['content'],
+        publish_date:  post_hash['publish_date'].to_datetime,
+        title:         post_hash['title'],
+        excerpt:       post_hash['excerpt'],
+        status:        post_hash['status'],
+        permalink:     post_hash['permalink'],
         comment_count: post_hash['comment_count'],
-        thumbnail: make_image(post_hash['thumbnail']),
-
-        updated_at: post_hash['updated'].to_datetime,
-        terms: terms
+        thumbnail:     make_image(post_hash['thumbnail']),
+        updated_at:    post_hash['updated'].to_datetime,
+        terms:         terms
       }
     )
   end
 
   def self.make_image(image_hash)
+    raise Errors::Image::UrlMissing if image_hash['url'].blank?
+    raise Errors::Image::UpdatedTimeMissing if image_hash['uploaded_time'].blank?
+
+    begin
+      uploaded_time = image_hash['uploaded_time'].to_datetime
+    rescue ArgumentError
+      raise Errors::Image::InvalidDateTimeFormat
+    end
 
     images = Image.where('id = ? or url = ?', image_hash['id'], image_hash['url'])
 
     if images.empty?
       Image.new({
                 url: image_hash['url'],
-                uploaded_time: image_hash['uploaded_time'].to_datetime,
+                uploaded_time: uploaded_time,
                 caption: image_hash['caption'],
                 alt_txt: image_hash['alt_txt']
               })
