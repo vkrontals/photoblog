@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20151023145642) do
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
+  add_index "posts", ["permalink"], name: "index_posts_on_permalink", using: :btree
 
   create_table "posts_terms", force: :cascade do |t|
     t.integer  "post_id"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20151023145642) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "terms", ["slug"], name: "index_terms_on_slug", using: :btree
   add_index "terms", ["term_group"], name: "index_terms_on_term_group", using: :btree
 
   create_table "users", force: :cascade do |t|

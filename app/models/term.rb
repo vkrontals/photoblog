@@ -1,5 +1,5 @@
 class Term < ActiveRecord::Base
-  VALID_TERMS = %w[ CATEGORY TAG ]
+  VALID_TERMS = %w[ tag category ]
 
    # id
    # name
