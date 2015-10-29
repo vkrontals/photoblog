@@ -19,27 +19,7 @@ describe Utils::PostsBuilder do
   end
 
   describe '#make_post' do
-    let(:post_json) {<<here
-{
-  "content": "Nikon F100, Sigma 70-200mm f2.8 OS, Ilford HP5 400",
-  "publish_date": "2015-08-13 18:11:21",
-  "updated": "2015-08-21 15:58:26",
-  "title": "Couple in the park",
-  "excerpt": "",
-  "status": "publish",
-  "permalink": "couple-in-the-park",
-  "comment_count": 0,
-  "thumbnail": {
-    "caption": "some-caption",
-    "alt_txt": "some-text",
-    "uploaded_time": "2015-08-21 15:58:26",
-    "url": "2015/08/couple-in-the-park-nikon-f100.jpg"
-  },
-  "categories": "35mm",
-  "tags": "Nikon F100, Sigma 70-200mm f2.8 OS, black and white, Ilford HP5 400"
-}
-here
-}
+    let(:post_json) { File.read('lib/data/single_post.json')}
     let(:post_hash) { JSON.parse post_json }
     let(:make_post) { Utils::PostsBuilder.make_post(post_hash) }
 

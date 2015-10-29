@@ -69,7 +69,8 @@ here
       thumbnail_hash['uploaded_time'] = DateTime.new
 
       expect(Image).to_not receive(:new)
-      expect { Utils::ImagesBuilder.make_image(thumbnail_hash) }.to raise_exception Errors::Image::UrlMissing
+      expect { Utils::ImagesBuilder.make_image(thumbnail_hash) }
+        .to raise_exception Errors::Image::UrlMissing
     end
 
     it 'raises exception if uploaded_time is missing' do
@@ -80,7 +81,8 @@ here
       thumbnail_hash['uploaded_time'] = nil
 
       expect(Image).to_not receive(:new)
-      expect { Utils::ImagesBuilder.make_image(thumbnail_hash) }.to raise_exception Errors::Image::UpdatedTimeMissing
+      expect { Utils::ImagesBuilder.make_image(thumbnail_hash) }
+        .to raise_exception Errors::Image::UpdatedTimeMissing
     end
 
     it 'raises exception if uploaded_time is invalid' do
@@ -91,7 +93,8 @@ here
       thumbnail_hash['uploaded_time'] = 'some/crap-format'
 
       expect(Image).to_not receive(:new)
-      expect { Utils::ImagesBuilder.make_image(thumbnail_hash) }.to raise_exception Errors::Image::InvalidDateTimeFormat
+      expect { Utils::ImagesBuilder.make_image(thumbnail_hash) }
+        .to raise_exception Errors::Image::InvalidDateTimeFormat
     end
 
   end
