@@ -1,39 +1,40 @@
 class Resources::ImagesHost
 
-  attr_reader :data
+  attr_reader :data, :type, :prefix
 
   ExternalImage = Struct.new(:url, :last_modified, :size, :owner)
 
-  def images
-    @img || pull_latest
+  def initialize(type = :new, pre)
+    @type = type
+    @prefix = pre
   end
+
+  def images
+    external_images
+  end
+
+  private
 
   def pull_latest
     @img = external_images(Date.today).map do |row|
       Utils::ImagesBuilder.make_image({
         'url' => row.url,
         'uploaded_time' => row.last_modified
-      })
+      }, type)
     end
 
   end
 
-  def external_images(date = nil)
-    date ||= Date.today
-
-    filter = date.strftime('%Y/%m/')
-    puts "gathering images from: #{filter}"
-    amazon_aws(filter)
+  def external_images
+    amazon_aws
   end
 
-  private
-
-  def amazon_aws(prefix)
+  def amazon_aws
     begin
       @s3 ||= Aws::S3::Client.new
       imgs = @s3.list_objects({
         bucket: Settings.aws.s3_bucket,
-        delimiter: '/',
+        # delimiter: '/',
         #encoding_type: "url",
         #marker: "Marker",
         #max_keys: 1,

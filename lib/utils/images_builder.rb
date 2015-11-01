@@ -1,7 +1,7 @@
 module Utils
   module ImagesBuilder
 
-    def self.make_image(image_hash)
+    def self.make_image(image_hash, option = :all)
       raise Errors::Image::UrlMissing if image_hash['url'].blank?
       raise Errors::Image::UpdatedTimeMissing if image_hash['uploaded_time'].blank?
 
@@ -22,7 +22,7 @@ module Utils
                     alt_txt: image_hash['alt_txt']
                   })
       else
-        images.first
+        images.first if option == :all
       end
 
     end

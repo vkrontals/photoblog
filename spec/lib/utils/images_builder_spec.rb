@@ -97,6 +97,20 @@ here
         .to raise_exception Errors::Image::InvalidDateTimeFormat
     end
 
+
+    context 'with params :new' do
+
+      it 'returns only a new image' do
+        new_image = Utils::ImagesBuilder.make_image(thumbnail_hash)
+        new_image.save!
+
+        expect(Image).to receive(:where).and_return(Array(new_image))
+
+        expect(Utils::ImagesBuilder.make_image(thumbnail_hash, :new)).to eq(nil)
+      end
+
+    end
+
   end
 
 end
