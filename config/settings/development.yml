@@ -1,6 +1,9 @@
 google:
   enabled: false
 
+aws:
+  s3_bucket: thatcameraguydevelopment
+
 site:
   domain: thacameraguy.local:5000
   full_domain: http://thatcameraguy.local:5000

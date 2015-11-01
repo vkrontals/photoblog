@@ -4,4 +4,7 @@ module Errors::Image
   class UpdatedTimeMissing < StandardError; end
 
   class InvalidDateTimeFormat < StandardError; end
+
+  class ExternalImageHostError < StandardError; end
+
 end
