@@ -54,8 +54,23 @@ namespace :images do
 
   end
 
-  task :hello, [:arg1] => :environment do |t, args|
-    puts "Args were: #{args}"
+  desc 'Get stats of all the things'
+  task stats: :environment do
+    live_posts = Post.where(['publish_date <= ?', DateTime.now]).count
+    future_posts = Post.where(['publish_date > ?', DateTime.now]).count
+    image_count = Image.where('post_id IS NULL').count
+
+    puts '╔════════════ stats ═════════════╗'.green
+    puts '║%3.0f - images without posts      ║' % image_count
+    puts '║%3.0f - live posts                ║' % live_posts
+    puts '║%3.0f - future posts              ║' % future_posts
+    puts '╚════════════════════════════════╝'.green
   end
+
+  desc 'Generate json posts from images'
+  task g: :environment do
+
+  end
+
 
 end
