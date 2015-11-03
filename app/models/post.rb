@@ -25,5 +25,36 @@ class Post < ActiveRecord::Base
     permalink
   end
 
+  def to_json
+<<POST
+{
+  "content": "#{ content.html_safe }",
+  "publish_date": "#{ publish_date }",
+  "updated": "#{ updated_at }",
+  "title": "#{ title }",
+  "excerpt": "#{ excerpt }",
+  "status": "#{ status }",
+  "permalink": "#{ permalink}",
+  "comment_count": #{ comment_count },
+  "thumbnail": {
+    "caption": "#{ thumbnail.caption }",
+    "alt_txt": "#{ thumbnail.alt_txt }",
+    "uploaded_time": "#{ thumbnail.uploaded_time }",
+    "url": "#{ thumbnail.url }"
+  },
+  "categories": "#{ generate_terms(:category)}",
+  "tags": "#{ generate_terms(:tag) }"
+}
+POST
+  end
+
+  private
+
+  def generate_terms(term_type)
+    terms
+      .select{ |x| x.term_group == term_type.to_s }
+      .map{ |x| x.name }.join(', ')
+  end
+
 end
 
