@@ -11,4 +11,16 @@ class Term < ActiveRecord::Base
   validates :name, :slug, :term_group, presence: true
   validates :term_group, inclusion: VALID_TERMS
   validates :slug, uniqueness: true
+
+  def to_s
+    "name: #{name}, type: #{term_group}"
+  end
+
+  class ActiveRecord_Associations_CollectionProxy
+    def to_s
+      self.map(&:name).join(', ')
+    end
+
+  end
+
 end

@@ -11,4 +11,8 @@ class Image < ActiveRecord::Base
   validates :url, :uploaded_time, presence: true
   validates :url, uniqueness: true
 
+  def to_s
+    "url: #{url}, uploaded: #{uploaded_time}"
+  end
+
 end
