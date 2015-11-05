@@ -82,7 +82,7 @@ here
 
       expect(Image).to_not receive(:new)
       expect { Utils::ImagesBuilder.make_image(thumbnail_hash) }
-        .to raise_exception Errors::Image::UpdatedTimeMissing
+        .to raise_exception Errors::Image::UploadedTimeMissing
     end
 
     it 'raises exception if uploaded_time is invalid' do

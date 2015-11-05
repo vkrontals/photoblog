@@ -69,8 +69,34 @@ namespace :images do
 
   desc 'Generate json posts from images'
   task g: :environment do
+    image_without_posts = Image.where('post_id IS NULL')
+    latest_post_date = Post.order(publish_date: :desc)
+                         .first
+                         .publish_date
+                         .to_datetime
+                         .change(hour: 9, minute: 0)
+    json_array = []
+    errors = []
 
+    image_without_posts.each do |image|
+      begin
+        post = Utils::ImageToPost.make(image)
+        post.publish_date = latest_post_date
+
+        latest_post_date += 1.day
+
+        json_array << post
+      rescue Errors::Image::InvalidUrlFormat
+        errors << "Invalid url: #{image}".red
+
+      rescue
+        errors << "Some error: #{$!}: #{image}".red
+      end
+
+    end
+
+    puts '[' + json_array.map(&:to_json).join(',') + ']'
+    puts errors if errors.any?
   end
-
 
 end

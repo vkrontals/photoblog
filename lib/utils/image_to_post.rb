@@ -33,6 +33,8 @@ module Utils
 
       url = url_string.to_s.downcase.match regex
 
+      raise Errors::Image::InvalidUrlFormat unless url
+
       url[2].to_s.split('-')
     end
 

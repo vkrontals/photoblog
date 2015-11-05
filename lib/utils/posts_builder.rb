@@ -5,7 +5,7 @@ module Utils
 
   attr_reader :posts
 
-  POSTS = File.read('lib/data/posts.json')
+  POSTS = File.read('lib/data/posts_test.json')
 
   def initialize(json_data)
     @posts = Array(JSON.parse(json_data))
@@ -34,14 +34,20 @@ module Utils
 
   def postify
     result = []
+    errors = []
+
     posts.each do |post|
+      begin
       new_post = Utils::PostsBuilder.make_post(post)
       new_post.save!
 
       result << new_post
+      rescue
+        errors << "#{$!}"
+      end
 
     end
-
+    puts errors.join("\n").red
     result
   end
 

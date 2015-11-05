@@ -3,7 +3,7 @@ module Utils
 
     def self.make_image(image_hash, option = :all)
       raise Errors::Image::UrlMissing if image_hash['url'].blank?
-      raise Errors::Image::UpdatedTimeMissing if image_hash['uploaded_time'].blank?
+      raise Errors::Image::UploadedTimeMissing if image_hash['uploaded_time'].blank?
 
       begin
         uploaded_time = image_hash['uploaded_time'].to_datetime
