@@ -45,3 +45,4 @@ group :development, :test do
 end
 
 gem 'puma'
+gem 'rails_12factor'
