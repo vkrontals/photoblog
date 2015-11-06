@@ -1,3 +1,5 @@
+require 'fileutils'
+
 namespace :images do
   desc 'Get and save latest images from images host'
   task :pull, [:prefix] => :environment do |t, args|
@@ -71,10 +73,18 @@ namespace :images do
   task g: :environment do
     image_without_posts = Image.where('post_id IS NULL')
     latest_post_date = Post.order(publish_date: :desc)
-                         .first
-                         .publish_date
-                         .to_datetime
-                         .change(hour: 9, minute: 0)
+
+    if latest_post_date.blank?
+      latest_post_date = DateTime.now
+    else
+      latest_post_date = latest_post_date
+                           .first
+                           .publish_date
+                           .to_datetime
+                           .change(hour: 9, minute: 0)
+    end
+
+
     json_array = []
     errors = []
 
@@ -95,8 +105,42 @@ namespace :images do
 
     end
 
-    puts '[' + json_array.map(&:to_json).join(',') + ']'
+    FileUtils::mkdir_p('tmp/posts_json')
+
+    today = Date.today()
+
+    File.open("tmp/posts_json/#{today.strftime('%Y%m%d')}_posts.json", 'w') do |file|
+      file.write('[' + json_array.map(&:to_json).join(',') + ']')
+    end
+
+    # puts '[' + json_array.map(&:to_json).join(',') + ']'
     puts errors if errors.any?
+  end
+
+
+  desc 'Upload json posts'
+  task load: :environment do |t, args|
+    latest_json_path = Dir.glob(File.join('tmp/posts_json/', '*.*')).max { |a,b| File.ctime(a) <=> File.ctime(b) }
+
+    json = File.read(latest_json_path)
+    posts_array = JSON.parse json
+
+    count = 0
+    posts_array.each do |post|
+      print 'Processing: ' + post["title"]
+      begin
+        Utils::PostsBuilder.make_post(post).save!
+
+        print " success\n".green
+        count += 1
+      rescue
+        puts " #{$!}".red
+      end
+
+    end
+
+    puts "created #{count} posts".green
+
   end
 
 end
