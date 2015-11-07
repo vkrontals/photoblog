@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <% @posts.each do |post| %>
+    <url>
+      <loc><%= post_url(post) %></loc>
+      <lastmod><%= post.updated_at %></lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.6</priority>
+      <image:image>
+        <image:loc><%= image_host(post.thumbnail.url) %></image:loc>
+        <image:caption><%= post.thumbnail.caption %></image:caption>
+        <%
+        # <!--TODO: add title to image sitemap.xml <image:title></image:title>-->
+        # <!--TODO: add geo_location to sitemap.xml <image:geo_location></image:geo_location>-->
+        # <!--TODO: add licence info to sitemap.xml <image:license></image:license>-->
+        %>
+      </image:image>
+    </url>
+  <% end %>
+</urlset>

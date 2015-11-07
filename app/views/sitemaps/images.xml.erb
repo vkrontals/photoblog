@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc><%= root_url %></loc>
+    <% @images.each do |image| %>
+      <image:image>
+        <% # TODO: fix url to start with http or https %>
+        <image:loc><%= image_host(image.url) %></image:loc>
+        <image:caption><%= image.caption %></image:caption>
+        <%
+        # <!--TODO: add title to image sitemap.xml <image:title></image:title>-->
+        # <!--TODO: add geo_location to sitemap.xml <image:geo_location></image:geo_location>-->
+        # <!--TODO: add licence info to sitemap.xml <image:license></image:license>-->
+        %>
+      </image:image>
+    <% end %>
+  </url>
+</urlset>
