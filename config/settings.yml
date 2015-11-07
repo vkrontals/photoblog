@@ -11,3 +11,5 @@ site:
   domain: thacameraguy.co.uk
   full_domain: https://thatcameraguy.co.uk
 
+images:
+  server: //s3-eu-west-1.amazonaws.com/thatcameraguy/

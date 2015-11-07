@@ -10,7 +10,7 @@
 
     <div class="entry-thumbnail">
       <!--TODO: remove hardcoded url base, image needs to come from amazon s3-->
-      <%= link_to image_tag('http://thatcameraguy.co.uk/wp-content/uploads/' + @post.thumbnail.url, alt: @post.thumbnail.alt_txt),
+      <%= link_to image_tag(image_host(@post.thumbnail.url), alt: @post.thumbnail.alt_txt),
                   @post,
                   title: "Permalink to #{ @post.title }",
                   rel: @post.id,
