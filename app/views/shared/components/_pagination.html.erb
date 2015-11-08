@@ -1,0 +1,19 @@
+<nav role="navigation">
+  <h1 class="screen-reader-text">Posts navigation</h1>
+  <div class="nav-links">
+
+    <div class="nav-previous">
+      <!-- TODO: paginate content-->
+      <%= link_to root_path do %>
+        <span class="meta-nav">←</span> Older posts
+      <% end %>
+    </div>
+
+    <div class="nav-next">
+      <%= link_to root_path do %>
+        Newer posts <span class="meta-nav">→</span>
+      <% end %>
+    </div>
+
+  </div>
+</nav>

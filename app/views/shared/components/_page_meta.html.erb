@@ -1,0 +1,34 @@
+<footer class="entry-meta">
+  <p class="posted-on">
+    Posted on
+    <%= link_to post, rel: :bookmark, class: 'bookmark-link' do %>
+      <%= time_tag post.publish_date, pubdate: true, class: 'entry-date published' %>
+      <%= time_tag post.publish_date, class: 'date updated' %>
+    <% end %>
+  </p>
+
+  <p class="byline">
+    by
+        <span class="author vcard">
+          <!--TODO: use rails helper to point to users-->
+          <%= link_to post.author.display_name, author_path(post.author), class: 'url fn n' %>
+        </span>
+  </p>
+
+  <p class="category-links">
+    Posted in
+    <%= post.terms
+            .to_a
+            .select{ |x| x.term_group == 'category' }
+            .map{ |x| link_to(x.name, category_path(x), rel: 'category') }.join(', ').html_safe %>
+  </p>
+
+  <p class="tags-links">
+    Tagged
+    <%= post.terms
+            .to_a
+            .select{ |x| x.term_group == 'tag' }
+            .map{ |x| link_to(x.name, tag_path(x), rel: 'tag') }.join(', ').html_safe %>
+  </p>
+
+</footer>

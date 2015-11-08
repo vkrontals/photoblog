@@ -16,6 +16,10 @@ class Term < ActiveRecord::Base
     "name: #{name}, type: #{term_group}"
   end
 
+  def to_param
+    slug
+  end
+
   class ActiveRecord_Associations_CollectionProxy
     def to_s
       self.map(&:name).join(', ')

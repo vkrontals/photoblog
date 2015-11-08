@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   get '/blog' => 'posts#index', as: 'blog'
 
+  get '/category/:term_slug' => 'terms#category', as: :category
+  get '/tag/:term_slug' => 'terms#tag', as: :tag
+
   get '/:id' => 'posts#show', as: 'post'
 
 end

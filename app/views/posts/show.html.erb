@@ -1,67 +1,35 @@
+<% post = @post %>
+
 <article class="single-page">
 
   <p><%= link_to 'Comments', '#comments' %></p>
 
   <header class="entry-header">
-    <h1 class="entry-title"><%= @post.title %></h1>
+    <h1 class="entry-title"><%= post.title %></h1>
   </header>
 
   <div class="entry-content">
 
     <div class="entry-thumbnail">
-      <!--TODO: remove hardcoded url base, image needs to come from amazon s3-->
-      <%= link_to image_tag(image_host(@post.thumbnail.url), alt: @post.thumbnail.alt_txt),
-                  @post,
-                  title: "Permalink to #{ @post.title }",
-                  rel: @post.id,
+      <%= link_to image_tag(image_host(post.thumbnail.url), alt: post.thumbnail.alt_txt),
+                  post,
+                  title: "Permalink to #{ post.title }",
+                  rel: post.id,
                   class: 'featured-image'
       %>
     </div>
     <div class="entry-body">
-      <%= @post.content.html_safe %>
+      <%= post.content.html_safe %>
     </div>
   </div>
 
-  <footer class="entry-meta">
-    <p class="posted-on">
-      Posted on
-      <%= link_to @post, rel: :bookmark do %>
-        <%= time_tag @post.publish_date, pubdate: true, class: 'entry-date published' %>
-        <%= time_tag @post.publish_date, class: 'date updated' %>
-      <% end %>
-    </p>
+  <%= render 'shared/components/page_meta', post: post %>
 
-    <p class="byline">
-      by
-       <span class="author vcard">
-         <a class="url fn n" href="http://thatcameraguy.co.uk/author/valters-krontals/">Valters Krontals</a>
-         <%= link_to @post.author.display_name, author_path(@post.author), class: 'url fn n' %>
-       </span>
-    </p>
-
-    <p class="category-links">
-      This entry was posted in
-      <a href="http://thatcameraguy.co.uk/category/35mm/" rel="category tag">35mm</a>
-    </p>
-
-    <p class="tags-links">
-      and tagged
-      <a href="http://thatcameraguy.co.uk/tag/centon-df-300/" rel="tag">Centon DF-300</a>,
-      <a href="http://thatcameraguy.co.uk/tag/color/" rel="tag">color</a>,
-      <a href="http://thatcameraguy.co.uk/tag/film/" rel="tag">film</a>,
-      <a href="http://thatcameraguy.co.uk/tag/minolta-x300/" rel="tag">Minolta x300</a>,
-      <a href="http://thatcameraguy.co.uk/tag/tokina-28-70mm/" rel="tag">Tokina 28-70mm</a>,
-      <a href="http://thatcameraguy.co.uk/tag/tudor-200/" rel="tag">tudor 200</a>,
-      <a href="http://thatcameraguy.co.uk/tag/vivitar-35-105mm/" rel="tag">Vivitar 35-105mm</a>
-    </p>
-
-    <p class="bookmark-link">
-      Bookmark the <a href="http://thatcameraguy.co.uk/centon-df-300-minolta-x300/" rel="bookmark">permalink</a>
-    </p>
-  </footer>
 </article>
 
-<!--<div id="disqus_thread"><iframe id="dsq-app1" name="dsq-app1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="http://disqus.com/embed/comments/?base=default&amp;version=f1fc394da3cce1ce14a557d8c927c837&amp;f=thatcameraguycouk&amp;t_i=9%20http%3A%2F%2Fthatcameraguy.co.uk%2F%3Fp%3D9&amp;t_u=http%3A%2F%2Fthatcameraguy.co.uk%2Fcenton-df-300-minolta-x300%2F&amp;t_e=Centon%20DF-300%20%2F%20Minolta%20X300&amp;t_d=Centon%20DF-300%20%7C%20Minolta%20X300%20short%20review%20and%20sample%20photos&amp;t_t=Centon%20DF-300%20%2F%20Minolta%20X300&amp;s_o=default&amp;l=" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 321px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>-->
+
+<!--TODO: add commenting system
+<div id="disqus_thread"><iframe id="dsq-app1" name="dsq-app1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="http://disqus.com/embed/comments/?base=default&amp;version=f1fc394da3cce1ce14a557d8c927c837&amp;f=thatcameraguycouk&amp;t_i=9%20http%3A%2F%2Fthatcameraguy.co.uk%2F%3Fp%3D9&amp;t_u=http%3A%2F%2Fthatcameraguy.co.uk%2Fcenton-df-300-minolta-x300%2F&amp;t_e=Centon%20DF-300%20%2F%20Minolta%20X300&amp;t_d=Centon%20DF-300%20%7C%20Minolta%20X300%20short%20review%20and%20sample%20photos&amp;t_t=Centon%20DF-300%20%2F%20Minolta%20X300&amp;s_o=default&amp;l=" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 321px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>-->
 
 
 
