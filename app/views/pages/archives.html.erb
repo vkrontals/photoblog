@@ -6,45 +6,42 @@
 
   <div class="entry-content">
 
-    <div class="entry-thumbnail">
-      <a href="#" title="Permalink to ..." rel="id?">
-        <!--<img />-->
-      </a>
-    </div>
+    <% # TODO: add thumbnail to archives? %>
+    <!--<div class="entry-thumbnail">-->
+      <!--<a href="#" title="Permalink to ..." rel="id?">-->
+        <!--&lt;!&ndash;<img />&ndash;&gt;-->
+      <!--</a>-->
+    <!--</div>-->
 
     <div class="entry-body">
-      <!--...-->
+
+      <% current_year, current_month, close_list = nil, nil, nil %>
+      <% @posts.each do |post| %>
+        <% date = post.publish_date %>
+
+        <% unless date.year == current_year && date.month == current_month %>
+          <%= '</ul>'.html_safe if close_list %>
+          <%= "<h2>#{date.strftime('%B %Y')}</h2>\n<ul>".html_safe %>
+          <% close_list = false %>
+        <% end %>
+
+        <li><%= link_to "#{post.publish_date.strftime('%d')}: #{post.title}", post_path(post) %></li>
+
+        <% unless date.year == current_year && date.month == current_month
+             current_year, current_month, close_list = date.year, date.month, true
+           end %>
+        <% end %>
+
     </div>
   </div>
 
-  <footer class="entry-meta">
-    <p class="posted-on">
-      Posted on
-      <a href="http://thatcameraguy.co.uk/centon-df-300-minolta-x300/" rel="bookmark">
-        <time class="entry-date published" datetime="2015-08-12T18:08:19+00:00">August 12, 2015</time>
-        <time class="date updated" datetime="2015-08-24T09:22:06+00:00">August 24, 2015</time>
-      </a>
-    </p>
 
-    <p class="byline">
-      by
-       <span class="author vcard">
-         <a class="url fn n" href="http://thatcameraguy.co.uk/author/valters-krontals/">Valters Krontals</a>
-       </span>
-    </p>
+  <%= render 'shared/components/page_meta',
+             page: OpenStruct.new({   publish_date: DateTime.now, # TODO: set correct publish date
+                                      updated_date: DateTime.now, # TODO: set correct updated date
+                                      url: archives_path,
+                                      author: User.find(1), # TODO: set author with url slug
+                                      terms: nil
+                                  }) %>
 
-    <p class="category-links">
-      This entry was posted in
-      <a href="http://thatcameraguy.co.uk/category/35mm/" rel="category tag">35mm</a>
-    </p>
-
-    <p class="tags-links">
-      and tagged
-      <a href="http://thatcameraguy.co.uk/tag/centon-df-300/" rel="tag">Centon DF-300</a>
-    </p>
-
-    <p class="bookmark-link">
-      Bookmark the <a href="http://thatcameraguy.co.uk/centon-df-300-minolta-x300/" rel="bookmark">permalink</a>
-    </p>
-  </footer>
 </article>

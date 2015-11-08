@@ -3,14 +3,13 @@
   <div class="nav-links">
 
     <div class="nav-previous">
-      <!-- TODO: paginate content-->
-      <%= link_to root_path do %>
+      <%= link_to navigation.previous do %>
         <span class="meta-nav">←</span> Older posts
       <% end %>
     </div>
 
     <div class="nav-next">
-      <%= link_to root_path do %>
+      <%= link_to navigation.next do %>
         Newer posts <span class="meta-nav">→</span>
       <% end %>
     </div>

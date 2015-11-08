@@ -1,34 +1,40 @@
 <footer class="entry-meta">
-  <p class="posted-on">
-    Posted on
-    <%= link_to post, rel: :bookmark, class: 'bookmark-link' do %>
-      <%= time_tag post.publish_date, pubdate: true, class: 'entry-date published' %>
-      <%= time_tag post.publish_date, class: 'date updated' %>
-    <% end %>
-  </p>
+  <% if page.url %>
+    <p class="pageed-on">
+      Posted on
+      <%= link_to page.url, rel: :bookmark, class: 'bookmark-link' do %>
+        <%= time_tag(page.publish_date, pubdate: true, class: 'entry-date published') if page.publish_date %>
+        <%= time_tag(page.updated_date, class: 'date updated') if page.updated_date %>
+      <% end %>
+    </p>
+  <% end %>
 
-  <p class="byline">
-    by
-        <span class="author vcard">
-          <!--TODO: use rails helper to point to users-->
-          <%= link_to post.author.display_name, author_path(post.author), class: 'url fn n' %>
-        </span>
-  </p>
+  <% if page.author %>
+    <p class="byline">
+      by
+          <span class="author vcard">
+            <!--TODO: use rails helper to point to users-->
+            <%= link_to page.author.display_name, author_path(page.author), class: 'url fn n' %>
+          </span>
+    </p>
+  <% end %>
 
-  <p class="category-links">
-    Posted in
-    <%= post.terms
-            .to_a
-            .select{ |x| x.term_group == 'category' }
-            .map{ |x| link_to(x.name, category_path(x), rel: 'category') }.join(', ').html_safe %>
-  </p>
+  <% if page.terms %>
+    <p class="category-links">
+      Posted in
+      <%= page.terms
+              .to_a
+              .select{ |x| x.term_group == 'category' }
+              .map{ |x| link_to(x.name, category_path(x), rel: 'category') }.join(', ').html_safe %>
+    </p>
 
-  <p class="tags-links">
-    Tagged
-    <%= post.terms
-            .to_a
-            .select{ |x| x.term_group == 'tag' }
-            .map{ |x| link_to(x.name, tag_path(x), rel: 'tag') }.join(', ').html_safe %>
-  </p>
+    <p class="tags-links">
+      Tagged
+      <%= page.terms
+              .to_a
+              .select{ |x| x.term_group == 'tag' }
+              .map{ |x| link_to(x.name, tag_path(x), rel: 'tag') }.join(', ').html_safe %>
+    </p>
+  <% end %>
 
 </footer>

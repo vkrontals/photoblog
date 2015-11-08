@@ -1,0 +1,29 @@
+<article class="post">
+
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <%= link_to post.title, post, rel: :bookmark %>
+    </h1>
+  </header>
+
+  <div class="entry-content">
+    <p class="entry-thumbnail">
+
+      <%= link_to image_tag(image_host(post.thumbnail.url), alt: post.thumbnail.alt_txt),
+                  post,
+                  class: 'featured-image',
+                  rel: post.id %>
+    </p>
+
+    <%= post.content.html_safe %>
+  </div>
+
+  <%= render 'shared/components/page_meta',
+             page: OpenStruct.new({   publish_date: post.publish_date,
+                                      updated_date: post.updated_at,
+                                      url: post_path(post),
+                                      author: post.author,
+                                      terms: post.terms
+                                  }) %>
+</article>
+

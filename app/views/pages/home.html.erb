@@ -1,65 +1,25 @@
-<% 5.times do %>
-<article class="post">
+<!--TODO: add proper home page -->
+<article class="single-page">
 
   <header class="entry-header">
     <h1 class="entry-title">
-      <a href="http://thatcameraguy.co.uk/feed-them-pigeons/" rel="bookmark">Feed them pigeons</a>
+      <%= link_to 'Home', root_path, rel: :bookmark %>
     </h1>
   </header>
 
   <div class="entry-content">
-    <p class="entry-thumbnail">
-      <a href="http://thatcameraguy.co.uk/feed-them-pigeons/" title="Permalink to Feed them pigeons" rel="323">
-        <img width="1280" height="845" src="http://thatcameraguy.co.uk/wp-content/uploads/2015/10/feed-them-pigeons-nikon-f100-1280x845.jpg" class="featured-image" alt="Feed them pigeons, taken with Nikon F100, Nikon 50mm F1.4D, Ilford HP5 400, Ilfosol 3"></a>
-    </p>
-    <p>Feed them pigeons, taken with Nikon F100, Nikon 50mm F1.4D, Ilford HP5 400, Ilfosol 3</p>
+    <p class="entry-thumbnail"></p>
+    <div class="entry-body">
+      <p>This is the home page</p>
+    </div>
   </div>
 
-  <footer class="entry-meta">
-    <p class="posted-on">
-      Posted on
-      <a href="http://thatcameraguy.co.uk/feed-them-pigeons/" rel="bookmark">
-        <time class="entry-date published" datetime="2015-10-22T09:00:30+00:00">October 22, 2015</time>
-        <time class="date updated" datetime="2015-10-19T19:10:42+00:00">October 19, 2015</time>
-      </a>
-    </p>
+  <%= render 'shared/components/page_meta',
+             page: OpenStruct.new({   publish_date: DateTime.now, # TODO: set correct publish date
+                                      updated_date: DateTime.now, # TODO: set correct updated date
+                                      url: camera_gear_path,
+                                      author: User.find(1), # TODO: set author with url slug
+                                      terms: nil
+                                  }) %>
 
-    <p class="byline">
-      by
-       <span class="author vcard">
-         <a class="url fn n" href="http://thatcameraguy.co.uk/author/valters-krontals/">Valters Krontals</a>
-       </span>
-    </p>
-
-    <p class="category-links">
-      Posted in <a href="http://thatcameraguy.co.uk/category/35mm/" rel="category tag">35mm</a>
-    </p>
-
-    <p class="tags-links">
-      Tagged
-      <a href="http://thatcameraguy.co.uk/tag/feed-them-pigeons/" rel="tag">Feed them pigeons</a>,
-      <a href="http://thatcameraguy.co.uk/tag/ilford-hp5-400/" rel="tag">Ilford HP5 400</a>,
-      <a href="http://thatcameraguy.co.uk/tag/ilfosol-3/" rel="tag">Ilfosol 3</a>,
-      <a href="http://thatcameraguy.co.uk/tag/nikon-50mm-f1-4d/" rel="tag">Nikon 50mm F1.4D</a>
-    </p>
-  </footer>
 </article>
-<% end %>
-
-<nav role="navigation">
-  <h1 class="screen-reader-text">Posts navigation</h1>
-  <div class="nav-links">
-
-    <div class="nav-previous">
-      <a href="http://thatcameraguy.co.uk/page/2/">
-        <span class="meta-nav">←</span> Older posts
-      </a>
-    </div>
-
-    <div class="nav-next">
-      <a href="http://thatcameraguy.co.uk/">Newer posts
-        <span class="meta-nav">→</span>
-      </a>
-    </div>
-  </div>
-</nav>

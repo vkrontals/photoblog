@@ -1,5 +1,5 @@
 <article class="single-page">
-
+<!-- TODO: organise camera gear page -->
   <header class="entry-header">
     <h1 class="entry-title">Camera gear</h1>
   </header>
@@ -53,4 +53,12 @@
       </ul>
     </div>
   </div>
+
+  <%= render 'shared/components/page_meta',
+             page: OpenStruct.new({   publish_date: DateTime.now, # TODO: set correct publish date
+                                      updated_date: DateTime.now, # TODO: set correct updated date
+                                      url: camera_gear_path,
+                                      author: User.find(1), # TODO: set author with url slug
+                                      terms: nil
+                                  }) %>
 </article>
