@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   get '/category/:term_slug' => 'terms#category', as: :category
   get '/tag/:term_slug' => 'terms#tag', as: :tag
 
+  get '/blog/page/:page' => 'posts#index', as: :blog_page
+  get '/category/:term_slug/page/:page' => 'terms#category', as: :category_page
+  get '/tag/:term_slug/page/:page' => 'terms#tag', as: :tag_page
+
   get '/:id' => 'posts#show', as: 'post'
 
 end

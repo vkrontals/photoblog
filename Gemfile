@@ -43,6 +43,7 @@ group :development, :test do
   gem 'minitest'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
 end
+gem 'kaminari'
 
 gem 'puma'
 gem 'rails_12factor'

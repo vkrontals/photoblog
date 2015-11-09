@@ -1,12 +1,7 @@
 <!--TODO: add heading for tags/categories -->
-<!--TODO: add pagination-->
-<% @posts.take(5).each do |post| %>
+
+<% @posts.each do |post| %>
   <%= render 'posts/post', post: post %>
 <% end %>
 
-<!-- TODO: paginate content-->
-<%= render 'shared/components/pagination',
-           navigation: OpenStruct.new({
-                                          previous: '#',
-                                          next: '#'
-                                      }) %>
+<%= render 'shared/components/pagination', navigation: @nav %>

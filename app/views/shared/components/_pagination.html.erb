@@ -1,18 +1,51 @@
-<nav role="navigation">
-  <h1 class="screen-reader-text">Posts navigation</h1>
-  <div class="nav-links">
+<%
+  navigation ||= Openstruct.new(
+      {
+          next: nil,
+          previous: nil,
+          current: nil,
+          pages: []
+      })
+%>
 
-    <div class="nav-previous">
-      <%= link_to navigation.previous do %>
-        <span class="meta-nav">←</span> Older posts
+<% if navigation.next || navigation.previous %>
+  <% content_for :head do %>
+    <%= "<link rel='next' href='#{navigation.next}' />".html_safe if navigation.next %>
+    <%= "<link rel='previous' href='#{navigation.previous}' />".html_safe if navigation.previous %>
+  <% end %>
+  <nav class="pagination" role="navigation">
+    <h1 class="screen-reader-text">Posts navigation</h1>
+
+    <div class="nav-links">
+      <% if navigation.previous %>
+        <div class="nav-previous">
+          <%= link_to navigation.previous do %>
+            <span class="meta-nav">←</span> Newer posts
+          <% end %>
+        </div>
       <% end %>
-    </div>
 
-    <div class="nav-next">
-      <%= link_to navigation.next do %>
-        Newer posts <span class="meta-nav">→</span>
+      <% if navigation.next %>
+        <div class="nav-next">
+          <%= link_to navigation.next do %>
+            Older posts <span class="meta-nav">→</span>
+          <% end %>
+        </div>
       <% end %>
+      <ul>
+        <% navigation.pages.each_with_index do |page_url, index| %>
+          <% index += 1 %>
+          <li>
+            <%= link_to page_url do %>
+              <% if index == navigation.current %>
+                <%= content_tag(:strong, index) %>
+              <% else %>
+                <%= index %>
+              <% end %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
-
-  </div>
-</nav>
+  </nav>
+<% end %>

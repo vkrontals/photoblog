@@ -8,6 +8,12 @@
 
     <!-- <link rel="pingback" href="http://thatcameraguy.co.uk/xmlrpc.php"> -->
 
+    <% if content_for?(:robots) %>
+      <%= yield :robots %>
+    <% else %>
+      <meta name="robots" content="noindex,follow" />
+    <% end %>
+
     <meta name="description" content="<%= Settings.site.description %>"/>
 
     <!--<link rel="canonical" href="http://thatcameraguy.co.uk" /> -->
@@ -35,6 +41,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= csrf_meta_tags %>
+
+    <% if content_for?(:head) %>
+      <%= yield :head %>
+    <% end %>
+
   </head>
 
   <body>
