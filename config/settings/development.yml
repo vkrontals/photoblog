@@ -9,4 +9,4 @@ site:
   full_domain: http://thatcameraguy.local:5000
 
 images:
-  server: //s3-eu-west-1.amazonaws.com/thatcameraguydevelopment/
+  server: http://s3-eu-west-1.amazonaws.com/thatcameraguydevelopment/

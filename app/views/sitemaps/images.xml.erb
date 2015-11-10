@@ -5,7 +5,6 @@
     <loc><%= root_url %></loc>
     <% @images.each do |image| %>
       <image:image>
-        <% # TODO: fix url to start with http or https %>
         <image:loc><%= image_host(image.url) %></image:loc>
         <image:caption><%= image.caption %></image:caption>
         <%

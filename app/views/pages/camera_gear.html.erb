@@ -1,30 +1,26 @@
+<% content_for :robots do %>
+  <meta name="robots" content="index, follow">
+<% end %>
+
 <article class="single-page">
-<!-- TODO: organise camera gear page -->
   <header class="entry-header">
     <h1 class="entry-title">Camera gear</h1>
   </header>
 
   <div class="entry-content">
 
-    <!--<div class="entry-thumbnail">-->
-      <!--<a href="http://thatcameraguy.co.uk/centon-df-300-minolta-x300/" title="Permalink to Centon DF-300 / Minolta X300" rel="9">-->
-        <!--<img width="1280" height="855" src="http://thatcameraguy.co.uk/wp-content/uploads/2015/08/centon-df-300-05-1280x855.jpg" alt="man with his bird">-->
-      <!--</a>-->
-    <!--</div>-->
-
-
     <div class="entry-body">
       <h2>What I shoot with</h2>
       <h3>Camera</h3>
       <p><strong>35mm film:</strong></p>
       <ul>
-        <li><a href="/tag/centon-df-300/">Centon DF-300</a></li>
-        <li><a href="/tag/minolta-x700/">Minolta X700</a></li>
-        <li><a href="/tag/nikon-f100/">Nikon F100</a></li>
+        <li><%= link_to 'Centon DF-300', tag_path('centon-df-300') %></li>
+        <li><%= link_to 'Minolta X700', tag_path('minolta-x700') %></li>
+        <li><%= link_to 'Nikon F100', tag_path('nikon-f100') %></li>
       </ul>
       <p><strong>Medium format:</strong></p>
       <ul>
-        <li><a href="/tag/bronica-sqai/">Zenza Bronica SQai</a></li>
+        <li><%= link_to 'Zenza Bronica SQai', tag_path('zenza-bronica-sqai') %></li>
       </ul>
       <p><strong>Digital slr</strong></p>
       <ul>
@@ -36,7 +32,7 @@
       <ul>
         <li>Nikon 50mm F1.4D</li>
         <li>Nikon 28mm F2.8D</li>
-        <li><a href="/tag/sigma-70-200mm-f2-8-os/">Sigma 70-200mm F2.8 OS</a></li>
+        <li><%= link_to 'Sigma 70-200mm F2.8 OS', tag_path('sigma-70-200mm-f2-8-os') %></li>
       </ul>
       <p><strong>Minolta MD:</strong></p>
       <ul>
@@ -55,8 +51,8 @@
   </div>
 
   <%= render 'shared/components/page_meta',
-             page: OpenStruct.new({   publish_date: DateTime.now, # TODO: set correct publish date
-                                      updated_date: DateTime.now, # TODO: set correct updated date
+             page: OpenStruct.new({   publish_date: DateTime.parse('2015-08-17T18:23:03+00:00'),
+                                      updated_date: DateTime.parse('2015-08-17T18:23:03+00:00'),
                                       url: camera_gear_path,
                                       author: User.find(1), # TODO: set author with url slug
                                       terms: nil

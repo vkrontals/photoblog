@@ -1,4 +1,8 @@
-<!--TODO: add proper home page -->
+<% content_for :robots do %>
+  <meta name="robots" content="index, follow">
+<% end %>
+
+<% #<!--TODO: add proper home page --> %>
 <article class="single-page">
 
   <header class="entry-header">
@@ -15,8 +19,8 @@
   </div>
 
   <%= render 'shared/components/page_meta',
-             page: OpenStruct.new({   publish_date: DateTime.now, # TODO: set correct publish date
-                                      updated_date: DateTime.now, # TODO: set correct updated date
+             page: OpenStruct.new({   publish_date: DateTime.parse('2015-08-17T18:23:03+00:00'),
+                                      updated_date: DateTime.parse('2015-08-17T18:23:03+00:00'),
                                       url: camera_gear_path,
                                       author: User.find(1), # TODO: set author with url slug
                                       terms: nil
