@@ -47,7 +47,7 @@ module Utils
       end
 
     end
-    puts errors.join("\n").red
+    puts errors.join("\n").red if errors.any?
     result
   end
 
@@ -55,6 +55,7 @@ module Utils
     User.new({
                email: 'v.krontals@gmail.com',
                url: '',
+               slug: 'valters-krontals',
                display_name: 'Valters Krontals',
                password: 'password1'
              }).save

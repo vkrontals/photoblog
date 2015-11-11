@@ -46,4 +46,7 @@ end
 gem 'kaminari'
 
 gem 'puma'
-gem 'rails_12factor'
+
+group :prodction do
+  gem 'rails_12factor'
+end

@@ -7,7 +7,7 @@ describe Utils::TermsBuilder do
     let(:term_object) { 'term object' }
 
     it 'returns a list of tag objects' do
-      expect(Term).to receive(:new).twice.and_return(term_object)
+      expect(Utils::TermsBuilder).to receive(:make_term).twice.and_return(term_object)
       expect(Utils::TermsBuilder.make_terms(term_string, 'tag'))
         .to eq([term_object, term_object])
     end
