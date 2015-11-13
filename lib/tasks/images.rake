@@ -108,7 +108,7 @@ namespace :images do
 
     FileUtils::mkdir_p('tmp/posts_json')
 
-    today = Date.today()
+    today = Date.today
 
     File.open("tmp/posts_json/#{today.strftime('%Y%m%d')}_posts.json", 'w') do |file|
       file.write('[' + json_array.map(&:to_json).join(',') + ']')

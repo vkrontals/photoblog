@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show], as: :author, path: :author
 
   root 'pages#home'
 
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
     get "/#{page}"  => "pages##{ page.underscore }"
   end
 
+  get '/author/:slug' => 'users#show', as: :author
   get '/sitemap_index' => 'sitemaps#index'
   get '/post-sitemap'  => 'sitemaps#posts'
   get '/page-sitemap'  => 'sitemaps#pages'

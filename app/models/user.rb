@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   validates :email, :slug, uniqueness: true
   validates :email, :slug, :display_name, presence: true
 
+  def to_param
+    slug
+  end
+
 end
