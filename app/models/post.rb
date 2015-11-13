@@ -21,6 +21,8 @@ class Post < ActiveRecord::Base
   validates :content, :title, :publish_date, :permalink, :status, presence: true
   validates :permalink, uniqueness: true
 
+  # TODO permalink needs to be a valid url
+
   def to_param
     permalink
   end

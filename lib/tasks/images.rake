@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'optparse'
 
 namespace :images do
   desc 'Get and save latest images from images host'
@@ -113,17 +114,23 @@ namespace :images do
       file.write('[' + json_array.map(&:to_json).join(',') + ']')
     end
 
-    # puts '[' + json_array.map(&:to_json).join(',') + ']'
+    puts '[' + json_array.map(&:to_json).join(',') + ']'
     puts errors if errors.any?
   end
 
 
   desc 'Upload json posts'
   task load: :environment do |t, args|
-    latest_json_path = Dir.glob(File.join('tmp/posts_json/', '*.*')).max { |a,b| File.ctime(a) <=> File.ctime(b) }
+    puts 'start'.red
+    OptionParser.new do |opts|
+      opts.banner = 'Usage: -- -"$(<lib/data/posts.json)"'
+    end.parse!
 
-    json = File.read(latest_json_path)
-    posts_array = JSON.parse json
+    puts 'parsed stuff'.green
+    json_data = ARGV[1].dup
+    json_data.slice!(0)
+
+    posts_array = JSON.parse json_data
 
     count = 0
     posts_array.each do |post|
@@ -141,6 +148,35 @@ namespace :images do
 
     puts "created #{count} posts".green
 
+  end
+
+  desc 'Prints instructions for images'
+  task :help do
+    puts <<here
+Pull images from Amazon S3 and save to database
+
+$rake images:pull          - pull from current month folder
+$rake images:pull[:all]    - pull from all folders
+$rake images:pull[2015/10] - pull from given path
+
+Generate a json file fromm new images
+This will make a new json file under tmp/posts_json/
+with the name yyymmdd_posts.json
+
+$rake images:g
+
+Upload given json posts to database
+
+$rake images:load -- -"[{"some":"json"}]"
+
+can load from generated file directly
+$rake images:load -- -"$(<tmp/posts_json/20151106_post.json)"
+
+Show stats
+
+$rke images:stats
+
+here
   end
 
 end
