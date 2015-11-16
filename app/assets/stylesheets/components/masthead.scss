@@ -43,25 +43,25 @@
     margin-right: auto;
     max-width: 80%; //min 730px;
 
-    @media screen and (max-device-width: 1650px) {
+    @media screen and (max-width: 1650px) {
       max-width: 1280px; //min 730px;
     }
 
-    @media screen and (max-device-width: 1440px) {
+    @media screen and (max-width: 1440px) {
       max-width: 90%; //min 730px;
     }
 
-    @media screen and (max-device-width: 810px) {
+    @media screen and (max-width: 810px) {
       h1 { font-size: 3em; }
       h2 { font-size: 2em; }
     }
 
-    @media screen and (max-device-width: 650px) {
+    @media screen and (max-width: 650px) {
       h1 { font-size: 2em; }
       h2 { font-size: 1.5em; }
     }
 
-    @media screen and (max-device-width: 500px) {
+    @media screen and (max-width: 500px) {
       padding-bottom: 0;
       h1 { font-size: 1.6em; }
       h2 { font-size: .9em; }

@@ -27,9 +27,9 @@ class TermsController < ApplicationController
   private
 
   def load_posts(slug, group)
-    term = Term.find_by_slug(slug)
-    raise(ActiveRecord::RecordNotFound) unless term
-    term.posts.order(publish_date: :desc).page(params[:page].to_i)
+    @term = Term.find_by_slug(slug)
+    raise(ActiveRecord::RecordNotFound) unless @term
+    @term.posts.order(publish_date: :desc).page(params[:page].to_i)
   end
 
 end

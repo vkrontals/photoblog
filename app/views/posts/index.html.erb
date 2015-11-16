@@ -1,4 +1,6 @@
-<% #<!--TODO: add heading for tags/categories --> %>
+<% if params[:term_slug] %>
+  <h2><strong><%= @term.name %></h2>
+<% end  %>
 
 <% @posts.each do |post| %>
   <%= render 'posts/post', post: post %>
