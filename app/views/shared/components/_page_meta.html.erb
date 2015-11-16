@@ -12,10 +12,9 @@
   <% if page.author %>
     <p class="byline">
       by
-          <span class="author vcard">
-            <!--TODO: use rails helper to point to users-->
-            <%= link_to page.author.display_name, author_path(page.author), class: 'url fn n' %>
-          </span>
+      <span class="author vcard">
+        <%= link_to page.author.display_name, author_path(page.author), class: 'url fn n' %>
+      </span>
     </p>
   <% end %>
 
