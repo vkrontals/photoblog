@@ -1,23 +1,11 @@
+<%
+  set_body_class 'home'
+%>
 <% content_for :robots do %>
   <meta name="robots" content="index, follow">
 <% end %>
 
-<% # TODO: add proper home page %>
 <article class="single-page">
-
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <%= link_to 'Home', root_path, rel: :bookmark %>
-    </h1>
-  </header>
-
-  <div class="entry-content">
-    <p class="entry-thumbnail"></p>
-    <div class="entry-body">
-      <p>This is the home page</p>
-    </div>
-  </div>
-
   <%= render 'shared/components/page_meta',
              page: OpenStruct.new({   publish_date: DateTime.parse('2015-08-17T18:23:03+00:00'),
                                       updated_date: DateTime.parse('2015-08-17T18:23:03+00:00'),

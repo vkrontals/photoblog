@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :site_author
 
+  private
+
   def site_author
     @author ||= User.find_by_slug('valters-krontals')
   end
