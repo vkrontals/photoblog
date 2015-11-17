@@ -1,3 +1,7 @@
+<%
+   set_body_class 'archives'
+%>
+
 <% content_for :robots do %>
   <meta name="robots" content="index, follow">
 <% end %>
@@ -9,17 +13,14 @@
   </header>
 
   <div class="entry-content">
-    <% # TODO: add thumbnail to archives? %>
-
     <div class="entry-body">
-
       <% current_year, current_month, close_list = nil, nil, nil %>
       <% @posts.each do |post| %>
         <% date = post.publish_date %>
 
         <% unless date.year == current_year && date.month == current_month %>
-          <%= '</ul>'.html_safe if close_list %>
-          <%= "<h2>#{date.strftime('%B %Y')}</h2>\n<ul>".html_safe %>
+          <%= '</ul></div>'.html_safe if close_list %>
+          <%= "<div class='archives-item'><h2>#{date.strftime('%B %Y')}</h2>\n<ul>".html_safe %>
           <% close_list = false %>
         <% end %>
 
