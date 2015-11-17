@@ -6,7 +6,7 @@
   <% @posts.each do |post| %>
     <url>
       <loc><%= post_url(post) %></loc>
-      <lastmod><%= post.updated_at %></lastmod>
+      <lastmod><%= post.updated_at.to_date.strftime('%Y-%m-%d') %></lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.6</priority>
       <image:image>

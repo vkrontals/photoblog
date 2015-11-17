@@ -3,17 +3,17 @@
 
   <sitemap>
     <loc><%= post_sitemap_url(format: :xml) %></loc>
-    <lastmod><%= Post.last.created_at%></lastmod>
+    <lastmod><%= Post.last.created_at.to_date.strftime('%Y-%m-%d') %></lastmod>
   </sitemap>
 
   <sitemap>
     <loc><%= page_sitemap_url(format: :xml) %></loc>
-    <lastmod>2005-01-01</lastmod>
+    <lastmod>2015-11-17</lastmod>
   </sitemap>
 
   <sitemap>
     <loc><%= image_sitemap_url(format: :xml) %></loc>
-    <lastmod><%= Image.last.created_at %></lastmod>
+    <lastmod><%= Image.last.created_at.to_date.strftime('%Y-%m-%d')  %></lastmod>
   </sitemap>
 
 </sitemapindex>
