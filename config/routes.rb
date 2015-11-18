@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
+  #match '/wp-content/uploads/*' to: Settings.images.server
+  # match '/wp-content/uploads/*', to: redirect('http://s3-eu-west-1.amazonaws.com/thatcameraguy/', status: 302)
+
+  get '/wp-content/uploads/*image_path' => 'redirects#external_images_host'
+
   %w{ home
       camera-gear
       archives
