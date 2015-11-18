@@ -1,9 +1,18 @@
 @media all {
   .archives {
     .entry-body {
-      -webkit-column-count: 3;
-      -moz-column-count: 3;
-      column-count: 3;
+
+      @media all and (min-width: 600px ) {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+      }
+
+      @media all and (min-width: 900px ) {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+      }
 
       -webkit-column-gap: 20px;
       -moz-column-gap: 20px;
@@ -17,3 +26,4 @@
     }
   }
 }
+
