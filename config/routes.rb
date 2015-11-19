@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get "/#{page}"  => "pages##{ page.underscore }"
   end
 
+
+  get '/feed' => 'pages#feed', defaults: { format: 'atom' }
+
   get '/author/:slug' => 'users#show', as: :author
   get '/sitemap_index' => 'sitemaps#index'
   get '/post-sitemap'  => 'sitemaps#posts'

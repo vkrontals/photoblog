@@ -29,6 +29,9 @@
 
     <meta name="google-site-verification" content="<%= Settings.google.site_verification %>" />
 
+    <%= auto_discovery_link_tag :atom, "/feed" %>
+    <%= auto_discovery_link_tag :rss, "/feed.rss" %>
+
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
 

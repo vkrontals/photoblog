@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.order(publish_date: :desc).page(params[:page].to_i)
+    @posts = Post.where(['publish_date <= ?', DateTime.now]).order(publish_date: :desc).page(params[:page].to_i)
     @nav = OpenStruct.new(
       {
         previous: (blog_page_url(@posts.prev_page) unless @posts.first_page?),
