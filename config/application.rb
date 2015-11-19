@@ -25,5 +25,7 @@ module Photoblog
 
     # include lib folder to autoload
     config.autoload_paths << Rails.root.join('lib')
+
+    config.action_controller.default_url_options = { :trailing_slash => true }
   end
 end
