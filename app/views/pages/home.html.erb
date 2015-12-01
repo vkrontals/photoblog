@@ -6,6 +6,7 @@
 <% end %>
 
 <article class="single-page">
+  <h2 class="a11y"><%= Settings.site.title %></h2>
   <%= render 'shared/components/page_meta',
              page: OpenStruct.new({   publish_date: DateTime.parse('2015-08-17T18:23:03+00:00'),
                                       updated_date: DateTime.parse('2015-08-17T18:23:03+00:00'),

@@ -1,9 +1,9 @@
-<footer class="entry-meta">
+<footer itemscope itemtype="http://schema.org/BlogPosting" class="entry-meta">
   <% if page.url %>
     <p class="pageed-on">
       Posted on
       <%= link_to page.url, rel: :bookmark, class: 'bookmark-link' do %>
-        <%= time_tag(page.publish_date, pubdate: true, class: 'entry-date published') if page.publish_date %>
+        <%= time_tag(page.publish_date, itemprop: 'datePublished', class: 'entry-date published') if page.publish_date %>
         <%= time_tag(page.updated_date, class: 'date updated') if page.updated_date %>
       <% end %>
     </p>

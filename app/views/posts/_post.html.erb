@@ -1,18 +1,17 @@
 <article class="post" data-id="<%= post.id %>">
 
   <header class="entry-header">
-    <h1 class="entry-title">
+    <h2 class="entry-title">
       <%= link_to post.title, post, rel: :bookmark %>
-    </h1>
+    </h2>
   </header>
 
   <div class="entry-content">
     <p class="entry-thumbnail">
 
-      <%= link_to image_tag(image_host(post.thumbnail.url), alt: post.thumbnail.alt_txt),
+      <%= link_to image_tag(image_host(post.thumbnail.url), alt: (post.thumbnail.alt_txt || post.title)),
                   post,
-                  class: 'featured-image',
-                  rel: post.id %>
+                  class: 'featured-image' %>
     </p>
 
     <%= post.content.html_safe %>

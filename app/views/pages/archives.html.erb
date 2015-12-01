@@ -15,6 +15,7 @@
   <div class="entry-content">
     <div class="entry-body">
       <% current_year, current_month, close_list = nil, nil, nil %>
+
       <% @posts.each do |post| %>
         <% date = post.publish_date %>
 
@@ -29,7 +30,8 @@
         <% unless date.year == current_year && date.month == current_month
              current_year, current_month, close_list = date.year, date.month, true
            end %>
-        <% end %>
+      <% end %>
+      <%= '</ul></div>'.html_safe if close_list %>
 
     </div>
   </div>

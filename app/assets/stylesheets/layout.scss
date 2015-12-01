@@ -29,6 +29,13 @@
     height: auto;
   }
 
+  .a11y {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+  }
 
   ul.menu {
     margin: 0;
@@ -65,7 +72,8 @@
     margin-bottom: 7em;
 
 
-    header h1 {
+    header h1,
+    header h2 {
       font-size: 2em;
       text-transform: uppercase;
       margin-bottom: .5em;

@@ -13,8 +13,8 @@
     <%= "<link rel='next' href='#{navigation.next}' />".html_safe if navigation.next %>
     <%= "<link rel='previous' href='#{navigation.previous}' />".html_safe if navigation.previous %>
   <% end %>
-  <nav class="pagination" role="navigation">
-    <h1 class="screen-reader-text">Posts navigation</h1>
+  <nav class="pagination">
+    <h2 class="a11y">Posts navigation</h2>
 
     <div class="nav-links">
       <% if navigation.previous %>
