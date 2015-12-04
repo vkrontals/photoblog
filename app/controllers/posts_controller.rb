@@ -2,6 +2,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(['publish_date <= ?', DateTime.now]).order(publish_date: :desc).page(params[:page].to_i)
+
+    raise ActiveRecord::RecordNotFound unless @posts.any?
+
     @nav = OpenStruct.new(
       {
         previous: (blog_page_url(@posts.prev_page) unless @posts.first_page?),
@@ -13,6 +16,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_permalink(params[:id])
+    raise ActiveRecord::RecordNotFound unless @post
   end
 
   private

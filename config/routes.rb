@@ -35,4 +35,6 @@ Rails.application.routes.draw do
 
   get '/:id' => 'posts#show', as: 'post'
 
+  match '*a', :to => 'errors#routing', via: :get
+
 end
