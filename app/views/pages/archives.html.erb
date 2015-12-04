@@ -1,7 +1,7 @@
 <%
    set_body_class 'archives'
 %>
-
+<% content_for(:meta_title) { 'Archives | ' + Settings.site.title } %>
 <% content_for :robots do %>
   <meta name="robots" content="index, follow">
 <% end %>
@@ -35,7 +35,6 @@
 
     </div>
   </div>
-
 
   <%= render 'shared/components/page_meta',
              page: OpenStruct.new({   publish_date: DateTime.parse('2015-08-17T18:23:03+00:00'),
