@@ -38,7 +38,7 @@
           <li>
             <%= link_to page_url do %>
               <% if index == navigation.current %>
-                <%= content_tag(:strong, index) %>
+                <strong><%= index %></strong>
               <% else %>
                 <%= index %>
               <% end %>
