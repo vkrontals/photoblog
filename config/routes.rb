@@ -2,8 +2,18 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  #match '/wp-content/uploads/*' to: Settings.images.server
-  # match '/wp-content/uploads/*', to: redirect('http://s3-eu-west-1.amazonaws.com/thatcameraguy/', status: 302)
+  [ { from: '/cdn-cgi/cl/',         to: '/' },
+    { from: '/tag/tokina-28-70mm/', to: '/blog/' },
+    { from: '/page/2/',             to: '/blog/page/2/' },
+    { from: '/tags/centon-df-300',  to: '/tag/centon-df300/' },
+    { from: '/tag/bronica-sqai/',   to: '/tag/zenza-bronica-sqai/'},
+    { from: '/2015/10/',            to: '/blog/' },
+    { from: '/tag/taken-with-zenza-bronica-sqai/', to: '/tag/zenza-bronica-sqai/' },
+    { from: '/tag/zenzanon-ps-110mm-macro/',       to: '/tag/zenzanon-ps-110mm-f4-macro/' },
+    { from: '/2015/08/',            to: '/blog/' }
+  ].each do |url|
+    get url[:from], to: redirect(path: url[:to])
+  end
 
   get '/wp-content/uploads/*image_path' => 'redirects#external_images_host'
 
