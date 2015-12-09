@@ -9,6 +9,3 @@ site:
   domain: thacameraguy.local:5000
   full_domain: http://thatcameraguy.local:5000
 
-images:
-  server: http://s3-eu-west-1.amazonaws.com/thatcameraguy/
-#  server: http://s3-eu-west-1.amazonaws.com/thatcameraguydevelopment/

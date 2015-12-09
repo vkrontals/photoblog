@@ -12,4 +12,4 @@ site:
   full_domain: http://thatcameraguy.co.uk
 
 images:
-  server: http://s3-eu-west-1.amazonaws.com/thatcameraguy/
+  server: http://images.thatcameraguy.co.uk/
