@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   [ { from: '/cdn-cgi/cl/',         to: '/' },
     { from: '/tag/tokina-28-70mm/', to: '/blog/' },
     { from: '/sample-page/',        to: '/' },
-    { from: '/page/2/',             to: '/blog/page/2/' },
+    { from: '/page/*path',          to: '/blog/page/1' },
     { from: '/tags/centon-df-300',  to: '/tag/centon-df300/' },
     { from: '/tag/bronica-sqai/',   to: '/tag/zenza-bronica-sqai/'},
     { from: '/2015/10/',            to: '/blog/' },
