@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(['publish_date <= ?', DateTime.now]).order(publish_date: :desc).page(params[:page].to_i)
+    expires_in 30.days, public: true, must_revalidate: false
 
     raise ActiveRecord::RecordNotFound unless @posts.any?
 
@@ -17,6 +18,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by_permalink(params[:id])
     raise ActiveRecord::RecordNotFound unless @post
+    expires_in 30.days, public: true, must_revalidate: false
   end
 
   private
