@@ -1,9 +1,13 @@
 class PagesController < ApplicationController
 
+
   def archives
     @posts = Post.where(['publish_date <= ?', DateTime.now]).order(publish_date: :desc)
   end
 
+  def home
+    expires_in 30.days, public: true, must_revalidate: true
+  end
 
   def feed
     @posts = Post.where(['publish_date <= ?', DateTime.now]).order(publish_date: :desc).limit(20)
