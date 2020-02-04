@@ -9,7 +9,7 @@ site:
   tagline: Street photography and stuff
   description: London street photography, shooting mostly film. Black and white, medium format and 35mm film, Zenza Bronica, Nikon
   domain: thacameraguy.co.uk
-  full_domain: http://thatcameraguy.co.uk
+  full_domain: https://thatcameraguy.co.uk
 
 images:
-  server: http://images.thatcameraguy.co.uk/
+  server: https://images.thatcameraguy.co.uk/
