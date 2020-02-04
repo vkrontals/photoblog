@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
     @author ||= User.find_by_slug('valters-krontals')
   end
 
+  def default_url_options
+    if Rails.env.production?
+      Rails.application.routes.default_url_options = { host: "thatcameraguy.co.uk", protocol: 'https' }
+    end
+  end
 end
