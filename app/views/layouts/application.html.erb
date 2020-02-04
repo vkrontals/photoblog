@@ -18,6 +18,9 @@
     <% end %>
 
     <meta name="description" content="<%= meta_description %>"/>
+    <% if content_for?(:canonical) %>
+      <link rel="canonical" href="<%= yield :canonical %>" />
+    <% end %>
 
     <!-- open graph tags -->
     <meta property="og:locale" content="en_UK" />
