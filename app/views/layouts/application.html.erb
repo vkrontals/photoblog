@@ -14,7 +14,7 @@
     <% if content_for?(:robots) && Settings.google.enabled %>
       <%= yield :robots %>
     <% else %>
-      <meta name="robots" content="noindex,follow" />
+      <meta name="robots" content="index,follow" />
     <% end %>
 
     <meta name="description" content="<%= meta_description %>"/>
