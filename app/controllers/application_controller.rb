@@ -27,6 +27,8 @@ class ApplicationController < ActionController::Base
   def default_url_options
     if Rails.env.production?
       Rails.application.routes.default_url_options = { host: "thatcameraguy.co.uk", protocol: 'https' }
+    else
+      Rails.application.routes.default_url_options
     end
   end
 end

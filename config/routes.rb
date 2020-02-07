@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  root 'pages#home'
+root 'pages#home'
 
   [ { from: '/cdn-cgi/cl/',         to: '/' },
     { from: '/tag/tokina-28-70mm/', to: '/blog/' },
@@ -47,5 +46,4 @@ Rails.application.routes.draw do
   get '/:id' => 'posts#show', as: 'post'
 
   match '*a', :to => 'errors#routing', via: :get
-
 end
